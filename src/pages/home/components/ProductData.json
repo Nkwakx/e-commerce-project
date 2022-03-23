@@ -1,0 +1,25 @@
+[
+  {
+    "prodId": 1,
+    "img": "https://www.pexels.com/photo/light-people-building-industry-6389892/",
+    "title": "Morning Shaker",
+    "description": "Alias assumenda dolorum doloremque sapiente aliquid aperiam.",
+    "price": "R599"
+  },
+
+  {
+    "prodId": 2,
+    "img": "https://www.pexels.com/photo/light-people-building-industry-6389892/",
+    "title": "Sky Bet",
+    "description": "Alias assumenda dolorum doloremque sapiente aliquid aperiam.",
+    "price": "R99"
+  },
+
+  {
+    "prodId": 3,
+    "img": "https://www.pexels.com/photo/light-people-building-industry-6389892/",
+    "title": "Yoga Roller",
+    "description": "Alias assumenda dolorum doloremque sapiente aliquid aperiam.",
+    "price": "R299"
+  }
+]
