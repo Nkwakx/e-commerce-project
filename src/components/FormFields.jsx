@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaUser } from 'react-icons/fa';
+import { CreateNewUser, SignInWithGoogle } from './../firebase/FirebaseAuth';
+import { SignInUnknown } from './../firebase/FirebaseAuth';
 
 export default function FormFields(props) {
 
@@ -23,13 +25,34 @@ export default function FormFields(props) {
     };
     const submitHandler = (e) => {
         e.preventDefault();
-        if (errorHandler()) {
-            props.onSubmit(frmErrors);
-        }
-
+        if (!frmValues) return;
+        setFrmValue("");
+    }
+    function GoogleSignIn() {
+        SignInWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log("Sign in/up success ", user);
+                CreateNewUser(user.uid, user);
+                
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Error ", errorCode, errorMessage);
+            });
     }
 
-
+    function SignAnonymously() {
+        SignInUnknown()
+            .then(() => {
+                console.log("Happy yay!");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Error:", errorCode, errorMessage);
+            });
+    }
     const errorHandler = (errors) => {
 
         const { name, value } = errors.target;
@@ -127,11 +150,11 @@ export default function FormFields(props) {
                     <NavLink to="/signin"> Back to login page</NavLink></div> : <>
                     <div className="login-or">
                         <span className="or-line"></span>
-                        <span className="span-or">or</span>
+                        <span className="span-or">or sign with</span>
                     </div>
                     <div className="social-login">
-                        <NavLink to="/"><i className="auth-icon"><FcGoogle /></i></NavLink>
-                        <NavLink to="/"><i className="auth-icon"><FaUser /></i></NavLink>
+                        <button title='Google' onClick={() => GoogleSignIn()}><i className="auth-icon"><FcGoogle /></i></button>
+                        <button title='Anonymously' onClick={() => SignAnonymously()}><i className="auth-icon"><FaUser /></i></button>
                     </div>
                     <div className='signup'>
                         {title === "Sign Up" ? <p>Already have accont? <NavLink to="/signin"> Log in</NavLink></p> :

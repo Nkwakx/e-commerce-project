@@ -11,6 +11,7 @@ import { BsFacebook } from "react-icons/bs";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { useLocation } from 'react-router-dom';
+import { Logout } from './../firebase/FirebaseAuth';
 
 
 
@@ -51,6 +52,8 @@ export default function NavBar(props) {
           <NavLink to='/' title="Oders"><BsBookmarkHeart /></NavLink>
           <NavLink to='/' title="Cart"><AiOutlineShoppingCart /></NavLink>
           <NavLink to='/signin' title="Sign in"> <FaUserLock /> <BiLogIn /></NavLink>
+
+          {/* <button onClick={() => {Logout();}}>Logout</button> */}
         </div>
   
       </div>
@@ -62,7 +65,7 @@ export default function NavBar(props) {
           <NavLink className={"nav-link"} to='/watersport'>Watersport</NavLink>
         </div>
       </> : ""}
-
+      
     </header>
   )
 }

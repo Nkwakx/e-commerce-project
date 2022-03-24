@@ -23,9 +23,9 @@ export default function Authetication() {
                     </div>
                 </div>
             </header>
-            <div className='auth-layout'>
+            {/* <div className='auth-layout'>
 
-            </div>
+            </div> */}
         </>
     )
 

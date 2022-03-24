@@ -241,15 +241,14 @@
 .span-or {
   background-color: #fff;
   display: block;
-  left: 50%;
+  left: 40%;
   margin-left: -20px;
   position: absolute;
   text-align: center;
   text-transform: uppercase;
   top: 0;
-  width: 42px;
 }
-.social-login li a {
+.social-login {
   text-align: center;
   display: block;
 }
@@ -298,19 +297,21 @@ input:not(:placeholder-shown) + span {
   display: inline;
   padding: 10px;
 }
-.social-login a {
-  margin-bottom: 0;
+.social-login button {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
 }
 .signup {
   margin-top: 10px;
 }
-.auth-layout {
+/* .auth-layout {
   background-image: url(../assets/images/user-access-authentication-icon.jpg);
   background-repeat: repeat-x;
   object-fit: fill;
   background-position: right center;
   height: 40px;
-}
+} */
 /* ================== ~AUTH ENDS~ =================== */
 
 /* ================== ~BODY STARTS~ =================== */
