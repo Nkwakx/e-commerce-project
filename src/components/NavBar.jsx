@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
 import { BsArrowUp } from "react-icons/bs";
@@ -11,11 +11,48 @@ import { BsFacebook } from "react-icons/bs";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { useLocation } from 'react-router-dom';
-import { Logout } from './../firebase/FirebaseAuth';
+import { GetAuthState, Logout } from './../firebase/FirebaseAuth';
+// import { AllRoutes, RoutesObj } from "../routers/AllRoutes";
 
 
 
 export default function NavBar(props) {
+
+  const [currentUser, setCurrentUser] = useState({ displayName: "", email: "", profileUrl: "", uid: "", role: "" });
+
+  useEffect(() => {
+    GetAuthState()
+      .then((value) => {
+        if (value && value.uid && value.uid.length > 0) {
+          console.log("user is signed in and valid", value);
+          setCurrentUser(value);
+        } else {
+          console.log("User is signed out and no longer valid", value);
+          setCurrentUser({ displayName: "", email: "", profileUrl: "", uid: "", role: "" })
+        }
+      })
+      .catch((error) => { })
+  }, [GetAuthState()])
+
+  // function AuthNon() {
+  //   return AllRoutes.reverse().map((entry, index) => {
+  //     if (currentUser && currentUser.uid && currentUser.uid.length > 0) {
+  //       return (
+  //         <React.Fragment key={index}>
+  //           {entry.name === RoutesObj.sign_in.name || entry.name === RoutesObj.sign_up.name ? (
+  //             <React.Fragment key={index}></React.Fragment>
+  //           ) : (<NavLink className='navItem' key={index} to={entry.path}>
+  //             {entry.name}
+  //           </NavLink>)}
+  //         </React.Fragment>
+  //       );
+  //     } else {
+  //       return (<NavLink className='navItem' key={index} to={entry.path}>
+  //         {entry.name}
+  //       </NavLink>)
+  //     }
+  //   })
+  // }
 
   const url = useLocation();
 
@@ -53,9 +90,9 @@ export default function NavBar(props) {
           <NavLink to='/' title="Cart"><AiOutlineShoppingCart /></NavLink>
           <NavLink to='/signin' title="Sign in"> <FaUserLock /> <BiLogIn /></NavLink>
 
-          {/* <button onClick={() => {Logout();}}>Logout</button> */}
+          {currentUser.uid.length > 0 && (<button onClick={() => { Logout(); }}>Logout</button>)}
         </div>
-  
+
       </div>
       {url.pathname !== "/" ? <><hr />
         <div className="main-nav">
@@ -65,7 +102,7 @@ export default function NavBar(props) {
           <NavLink className={"nav-link"} to='/watersport'>Watersport</NavLink>
         </div>
       </> : ""}
-      
+
     </header>
   )
 }

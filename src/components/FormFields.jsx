@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaUser } from 'react-icons/fa';
-import { CreateNewUser, SignInWithGoogle } from './../firebase/FirebaseAuth';
-import { SignInUnknown } from './../firebase/FirebaseAuth';
+import { CreateNewUser, GetAuthState, SignInWithGoogle, SignInUnknown } from './../firebase/FirebaseAuth';
 
 export default function FormFields(props) {
 
@@ -46,6 +45,12 @@ export default function FormFields(props) {
         SignInUnknown()
             .then(() => {
                 console.log("Happy yay!");
+                GetAuthState()
+                .then((values)=>{
+                    console.log("Resolved value at the end", values);
+                }).catch((err)=>{
+                    console.log("Error occurred here: ", err);
+                })
             })
             .catch((error) => {
                 const errorCode = error.code;
