@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { BiLogIn } from "react-icons/bi";
 import { BsArrowUp } from "react-icons/bs";
 import { BiPhoneCall } from "react-icons/bi";
 import { AiOutlineMail } from "react-icons/ai";
-import { FaUserLock } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
 import { BsFacebook } from "react-icons/bs";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiFillTwitterCircle } from "react-icons/ai";
@@ -86,11 +84,11 @@ export default function NavBar(props) {
           </button>
         </div>
         <div className="mid-social">
-          <NavLink to='/' title="Oders"><BsBookmarkHeart /></NavLink>
-          <NavLink to='/' title="Cart"><AiOutlineShoppingCart /></NavLink>
-          <NavLink to='/signin' title="Sign in"> <FaUserLock /> <BiLogIn /></NavLink>
+          <NavLink to='/' className="orders" title="Oders"><AiFillHeart /></NavLink>
+          <NavLink to='cart' className="orders" title="Cart"><AiOutlineShoppingCart /><span> 0</span></NavLink>
+          {currentUser.uid.length === 0 && (<NavLink to='/signin' className="Sign-in"> Login/Register</NavLink>)}
 
-          {currentUser.uid.length > 0 && (<button onClick={() => { Logout(); }}>Logout</button>)}
+          {currentUser.uid.length > 0 && (<button className="Sign-in" onClick={() => { Logout(); }}>Logout</button>)}
         </div>
 
       </div>

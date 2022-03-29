@@ -47,10 +47,32 @@
   color: #282c34;
 }
 .mid-social {
-  margin-left: 134px;
+  margin-left: 70px;
 }
-.mid-social a {
+.mid-social a,
+button {
+  margin-left: 10px;
+  border: 1px solid #282c34;
+  border-radius: 25%;
+}
+.mid-social button {
+  font-size: 10px;
+  cursor: pointer;
+}
+.mid-social .orders {
+  font-size: 15px;
   padding: 5px;
+}
+.mid-social .orders span {
+  font-size: 17px;
+  padding: 5px;
+}
+.mid-social .Sign-in {
+  padding: 5px;
+  font-size: 17px;
+  border: 1px solid #282c34;
+  border-radius: 25%;
+  align-items: center;
 }
 .mid-nav .logo span {
   font-size: 11px;
@@ -270,7 +292,7 @@ input[type="password"] {
   border-bottom: 1px solid #545454;
 }
 
-label {
+.auth-form label {
   margin-bottom: 15px;
   position: relative;
   border-bottom: 1px solid #ddd;
@@ -570,6 +592,9 @@ input:not(:placeholder-shown) + span {
 }
 
 /* ================== ~FOOTER END~ =================== */
+
+/* ================== ~QUICKVIEW START~ =================== */
+
 .product {
   height: 80vh;
   background-color: whitesmoke;
@@ -669,3 +694,423 @@ input:not(:placeholder-shown) + span {
 .galleryImg {
   width: 100%;
 }
+
+/* ================== ~QUICKVIEW END~ =================== */
+
+/* ================== ~SUMMARY CART STARTS~ =================== */
+
+.cart ion-icon,
+span {
+  display: inline-block;
+}
+
+.cart label,
+img {
+  color: #545454;
+  display: block;
+  text-decoration: none;
+}
+
+.cart input {
+  font: inherit;
+  width: 100%;
+  border: none;
+}
+
+.cart input:focus {
+  outline: 2px solid blue;
+}
+
+/**
+ * Custom scrollbar style
+ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dcdcdc;
+}
+
+.container {
+  max-width: 1440px;
+  min-height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 600px;
+  color: #282c34;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.heading ion-icon {
+  font-size: 40px;
+}
+
+.item-flex {
+  display: flex;
+  flex-grow: 1;
+}
+
+/**
+ * checkout section style 
+ */
+
+.checkout {
+  width: 70%;
+  padding: 40px 60px;
+  background: white;
+  border-right: 1px solid #dcdcdc;
+}
+
+.section-heading {
+  color: #282c34;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 500px;
+}
+
+.payment-form {
+  margin-bottom: 40px;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.payment-method .method {
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.payment-method .selected {
+  border-color: blue;
+}
+
+.payment-method .method ion-icon {
+  font-size: 20px;
+}
+
+.payment-method .method .checkmark {
+  margin-left: auto;
+  color: #dcdcdc;
+}
+
+.payment-method .method .fill {
+  color: blue;
+}
+
+.label-default {
+  padding-left: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #dcdcdc;
+}
+
+.input-default {
+  background: #dcdcdc;
+  border-radius: 5px;
+  color: #dcdcdc;
+}
+
+.payment-form input {
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: 500px;
+}
+
+.cardholder-name,
+.card-number {
+  margin-bottom: 20px;
+}
+
+.card-number input,
+.cvv input {
+  letter-spacing: 3px;
+}
+
+.input-flex {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.input-flex .expire-date,
+.input-flex .cvv {
+  width: 50%;
+}
+
+.expire-date .input-flex {
+  color: #dcdcdc;
+  gap: 13px;
+}
+
+.expire-date .input-flex input {
+  text-align: center;
+}
+
+.btn {
+  border-radius: 5px;
+}
+
+.btn:active {
+  transform: scale(0.99);
+}
+
+.btn:focus {
+  color: white;
+  background: blue;
+  outline: 2px solid blue;
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: blue;
+  font-weight: 5px;
+  color: white;
+  padding: 13px 45px;
+}
+
+.btn-primary b {
+  margin-right: 10px;
+}
+
+/**
+ * cart section style
+ */
+
+.summary-cart {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cart-item-box {
+  padding: 40px 60px;
+  margin-bottom: auto;
+}
+
+.product-card:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.product-card .card-cart {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.card-cart .product-img {
+  border-radius: 5px;
+}
+
+.card-cart .detail .product-name {
+  font-weight: 600px;
+  font-size: 15px;
+  color: #545454;
+  margin-bottom: 10px;
+}
+
+.card-cart .detail .wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.product-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-qty button {
+  background: #dcdcdc;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-qty button:active,
+.product-close-btn:active ion-icon {
+  transform: scale(0.95);
+}
+
+.product-qty button ion-icon {
+  --ionicon-stroke-width: 60px;
+  font-size: 10px;
+}
+
+.product-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.product-close-btn ion-icon {
+  font-size: 25px;
+  color: #dcdcdc;
+}
+
+.product-close-btn:hover ion-icon {
+  color: #dcdcdc;
+}
+
+.discount-token {
+  padding: 40px 60px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.wrapper-flex {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.wrapper-flex input {
+  padding: 12px 15px;
+  font-weight: 600px;
+  letter-spacing: 2px;
+}
+
+.btn-outline {
+  padding: 10px 25px;
+  border: 1px solid blue;
+  color: blue;
+}
+
+.btn-outline:hover {
+  background: blue;
+  color: white;
+}
+
+
+.amount > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount > div:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.amount .total {
+  font-size: 18px;
+  font-weight: 700px;
+  color: #282c34;
+}
+
+/*-----------------------------------*\
+  #RESPONSIVE
+\*-----------------------------------*/
+
+@media (max-width: 1200px) {
+  .item-flex {
+    flex-direction: column-reverse;
+  }
+
+  /**
+   * checkout section responsive 
+   */
+
+  .checkout {
+    width: 100%;
+    border-right: none;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  /**
+   * cart section responsive
+   */
+
+  .summary-cart {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    border-bottom: 1px solid #dcdcdc;
+  }
+
+  .summary-cart .wrapper {
+    margin-top: auto;
+  }
+
+  .summary-cart .cart-item-box {
+    border-right: 1px solid #dcdcdc;
+    margin-bottom: 0;
+  }
+
+  .discount-token {
+    border-top: none;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  .summary-cart {
+    grid-template-columns: 1fr;
+  }
+
+  .discount-token {
+    border-top: 1px solid #dcdcdc;
+  }
+
+  .wrapper-flex {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 567px) {
+
+  .payment-method,
+  .input-flex {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .payment-method .method {
+    width: 100%;
+  }
+
+  .input-flex .expire-date,
+  .input-flex .cvv {
+    width: 100%;
+  }
+
+  .expire-date .input-flex {
+    flex-direction: row;
+  }
+}
+
+/* ================== ~SUMMARY CART END~ =================== */
