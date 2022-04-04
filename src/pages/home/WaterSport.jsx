@@ -1,13 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
-import NavBar from '../../components/NavBar'
-import SideBarDisplay from '../../components/SideBarDisplay';
+import NavBar from '../../components/navigation/NavBar';
+import SideBarDisplay from '../../components/navigation/SideBarDisplay';
 
 export default function WaterSport() {
     return (
         <>
             <NavBar />
-            <section className="body-contect">
+            <main className="body-contect">
                 <h2>Sport</h2>
                 <div className="row">
                     <SideBarDisplay />
@@ -17,7 +17,7 @@ export default function WaterSport() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </main>
         </>
     )
 }

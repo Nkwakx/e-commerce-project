@@ -1,10 +1,17 @@
 import React from 'react';
-import FormFields from '../../components/FormFields';
+import FormFields from '../../components/forms/FormFields';
 import Authetication from '../layouts/Authetication';
-import { Login } from '../../firebase/FirebaseAuth';
+import { useAuth } from './../../firebase/FirebaseAuthHook';
+import { useNavigate } from 'react-router-dom';
+import { RoutesObj } from './../../routers/AllRoutes';
 
 
 export default function SignIn() {
+
+  const { Login } = useAuth();
+  // const { history } = useNavigate();
+
+  let navigation = useNavigate();
 
   function submitSignIn(data) {
     if (!data.email || !data.password) {
@@ -16,6 +23,10 @@ export default function SignIn() {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log("Sign in successfully!", user);
+
+          // history.push(RoutesObj.home.path);
+          navigation(RoutesObj.home.path);
+
         })
         .catch((error) => {
           const errorCode = error.code;

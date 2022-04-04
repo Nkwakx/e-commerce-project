@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaUser } from 'react-icons/fa';
-import { CreateNewUser, GetAuthState, SignInWithGoogle, SignInUnknown } from './../firebase/FirebaseAuth';
+import { RoutesObj } from '../../routers/AllRoutes';
+import { useAuth } from '../../firebase/FirebaseAuthHook';
 
 export default function FormFields(props) {
 
@@ -12,6 +13,8 @@ export default function FormFields(props) {
     const [frmValues, setFrmValue] = useState(errCreate);
     const [frmErrors, setFrmError] = useState({});
 
+    const { SignInUnknown, SignInWithGoogle, CreateNewUser } = useAuth();
+    let navigation = useNavigate();
 
     useEffect(() => {
     }, [frmValues]);
@@ -32,7 +35,10 @@ export default function FormFields(props) {
             .then((result) => {
                 const user = result.user;
                 console.log("Sign in/up success ", user);
-                CreateNewUser(user.uid, user);
+                CreateNewUser(user.uid, user)
+                .then(() => {
+                    navigation(RoutesObj.home.path);
+                  })
                 
             }).catch((error) => {
                 const errorCode = error.code;
@@ -43,20 +49,20 @@ export default function FormFields(props) {
 
     function SignAnonymously() {
         SignInUnknown()
+        .then((result) => {
+            const user = result.user;
+            console.log("Sign in/up success ", user);
+            CreateNewUser(user.uid, user)
             .then(() => {
-                console.log("Happy yay!");
-                GetAuthState()
-                .then((values)=>{
-                    console.log("Resolved value at the end", values);
-                }).catch((err)=>{
-                    console.log("Error occurred here: ", err);
-                })
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log("Error:", errorCode, errorMessage);
-            });
+                navigation(RoutesObj.home.path);
+              })
+            
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log("Error ", errorCode, errorMessage);
+        });
+           
     }
     const errorHandler = (errors) => {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from './../../../../components/NavBar';
+import NavBar from './../../../../components/navigation/NavBar';
 import { BsPaypal } from 'react-icons/bs';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { AiFillCheckCircle } from 'react-icons/ai';

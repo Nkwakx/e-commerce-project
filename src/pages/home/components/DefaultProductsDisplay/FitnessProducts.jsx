@@ -1,38 +1,51 @@
 import React, { useState, useEffect } from 'react'
-import JSON_FILE from '../ProductData'
+import { NavLink, useLocation } from 'react-router-dom';
+import { useData } from './../../../../firebase/FirebaseDataHook';
 
 export default function FitnessProducts() {
 
     const [product, setProduct] = useState([]);
+    const { Products } = useData();
+    const url = useLocation();
 
-    useEffect(() => {
-        loader();
-    }, []);
+    useEffect(() => { loader(); }, [Products]);
 
     function loader() {
-        let uri = []
-        JSON_FILE.map((entry) => {
-            uri.push({ title: entry.title, description: entry.description, prodId: entry.prodId, price: entry.price });
-            return uri
-        });
-        setProduct(uri);
+        console.log("Products Main Cat Fit", Products)
+        let arr = []
+        if (Products != null) {
+            let baseMain = Products["fitness"]
+
+            if (baseMain) {
+                console.log("Yes", baseMain)
+                Object.values(baseMain).forEach((subcat) => {
+                    console.log("subcat", subcat?.products)
+                    if (subcat && subcat.products) {
+                        console.log("product array", Object.values(subcat.products))
+                        return arr = [...arr, ...Object.values(subcat.products)]
+                    }
+                })
+            }
+        }
+        setProduct(arr);
     }
 
     return (
         <>
             {
-                product.map((entry) => {
+                product.map((entry, index) => {
                     return (
-                        <div className="card" key={entry.prodId}>
+                        <NavLink to={`${entry.subCategory}/${entry.id}`} key={index}><div className="card" key={index}>
                             <div className="card__body">
-                                <img src={entry.img} className="card__image" alt='' />
-                                <p className="card__title">{entry.title}</p>
-                                <h3 className="card__description">{entry.price}</h3>
+                                <img src={entry.productImg} className="card__image" alt='' />
+                                <p className="card__title">{entry.productName}</p>
+                                <h3 className="card__description">{entry.productPrice}</h3>
                             </div>
-                        </div>
+                        </div></NavLink>
                     );
                 })
             }
         </>
     )
 }
+

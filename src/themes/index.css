@@ -1,9 +1,10 @@
-
 * {
   margin: 0;
   padding: 0;
 }
+html,
 body {
+  height: 100%;
   font-family: "Gill Sans" sans-serif;
   font-size: 15px;
   font-weight: 10px;
@@ -12,6 +13,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+header {
+  font-size: calc(10px + 2vmin);
+  color: white;
+  display: inline-block;
+  flex-direction: column;
+  width: 100%;
+}
+main {
+  min-height: calc(100vh - 198px - 283.24px);
+}
+section {
+  min-height: calc(100vh - 115px - 283.24px);
+  /* min-height: calc(100vh - 320px - 283.24px); */
+}
 
 ul {
   list-style: none;
@@ -19,26 +34,131 @@ ul {
 a {
   text-decoration: none;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
-h1{
+h1 {
   font-size: 2em;
   font-weight: bold;
 }
-hr{
+hr {
   color: #dcdaa9;
 }
-.active-nav{
-  color: red;
-  
+table {
+  border-collapse: collapse;
 }
-.body-contect .divider-title h2{
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: gray;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+td,
+th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 18px;
+}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  table {
+    width: 100%;
+  }
+
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    /* Label the data */
+    content: attr(data-column);
+
+    color: #000;
+    font-weight: bold;
+  }
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbbbbb;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #dcdcdc;
+}
+
+.active-nav {
+  color: red;
+}
+.container {
+  height: 100%;
+  padding: 10px 40px;
+}
+@media screen and (max-width: 675px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+.body-contect .divider-title h2 {
   font-size: 25px;
   font-weight: 700;
- text-align: left;
- margin: 25px 0;
+  text-align: left;
+  margin: 25px 0;
 }
 
 .group::before,

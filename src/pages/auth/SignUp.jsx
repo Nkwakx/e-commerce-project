@@ -1,11 +1,16 @@
 import React from 'react'
-import FormFields from '../../components/FormFields';
-import { Register, CreateNewUser } from '../../firebase/FirebaseAuth';
+import { useNavigate } from 'react-router-dom';
+import FormFields from '../../components/forms/FormFields';
+import { useAuth } from '../../firebase/FirebaseAuthHook';
+import { RoutesObj } from '../../routers/AllRoutes';
+//import { Register, CreateNewUser } from '../../firebase/FirebaseAuth';
 import Authetication from '../layouts/Authetication';
 
 
 export default function SignUp() {
 
+  const { Register, CreateNewUser } = useAuth();
+  let navigation = useNavigate();
 
   function submitSignUp(data) {
     if (!data.email || !data.password) {
@@ -18,6 +23,9 @@ export default function SignUp() {
           const user = userCredential.user;
           console.log("Sign up a success has been recieved:", user);
           CreateNewUser(user.uid, user)
+            .then(() => {
+              navigation(RoutesObj.home.path);
+            })
 
         })
         .catch((error) => {

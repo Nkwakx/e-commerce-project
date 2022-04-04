@@ -19,6 +19,12 @@ import WaterSport from '../pages/home/WaterSport';
 import FitnessProducts from './../pages/home/components/DefaultProductsDisplay/FitnessProducts';
 import SupplementsProducts from './../pages/home/components/DefaultProductsDisplay/SupplementsProducts';
 import WaterProducts from './../pages/home/components/DefaultProductsDisplay/WaterProducts';
+import ProductUploads from './../pages/admin/ProductUploads';
+import AdminLayout from '../pages/layouts/AdminLayout'
+import ProductDetails from '../pages/home/components/Views/ProductDetails';
+import ProductList from '../pages/admin/ProductList';
+import PageNotFound from '../pages/auth/PageNotFound';
+
 
 export default function Routing() {
     return (
@@ -29,6 +35,7 @@ export default function Routing() {
                 })
             }
             </Routes>
+           
 
             <Routes>
                 <Route path='/fitness' element={<Fitness />}>
@@ -60,6 +67,13 @@ export default function Routing() {
                 </Route>
             </Routes>
 
+            <Routes >
+                <Route path='/admin' element={<AdminLayout />}>
+                    <Route path='' element={<ProductList />} />
+                    <Route path='add-product' element={<ProductUploads />} />
+                </Route>
+            </Routes>
+          
         </Router>
     )
 }

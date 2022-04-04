@@ -9,8 +9,10 @@ import Supplements from '../pages/home/Supplements';
 import WaterSport from '../pages/home/WaterSport';
 import { IoFitnessOutline } from 'react-icons/io5';
 import { FaNutritionix } from 'react-icons/fa';
-import { GiWaterPolo } from 'react-icons/gi';import ProductDetails from '../pages/home/components/Views/ProductDetails';
+import { GiWaterPolo } from 'react-icons/gi';
+import ProductDetails from '../pages/home/components/Views/ProductDetails';
 import CartItemList from './../pages/home/components/cart/CartItemList';
+import PageNotFound from '../pages/auth/PageNotFound';
 
 
 export const RoutesObj = {
@@ -20,22 +22,27 @@ export const RoutesObj = {
     forgot_password: { name: "Forgot Password", path: "/forgot", comp: <ForgotPassword />, ex: true },
     reset_password: { name: "Reset Password", path: "/reset", comp: <ResetPassword />, ex: true },
 
-    home: { name: "Home", path: "/", comp: <Home />, ex: true },
     auth: { name: "Authetication", path: "/auth", comp: <Authetication />, ex: true },
-    product: { name: "Product", path: "/product", comp: <ProductDetails />, ex: true },
     cart: { name: "Cart", path: "/cart", comp: <CartItemList />, ex: true },
+
+    //errorMsg: { name: "Error", path: "/*", comp: <PageNotFound />, ex: true },
+    product: { name: "Product", path: "/:cat/:subcat/:product", comp: <ProductDetails />, ex: false },
+    home: { name: "Home", path: "/", comp: <Home />, ex: true },
 
 };
 
 export const CategoriesObj = {
 
     fitness: {
-        name: "Fitness", path: "/fitness", comp: <Fitness />, iconClassName: <IoFitnessOutline />, ex: true,
+        name: "Fitness", path: "/fitness", comp: <Fitness />, iconClassName: <IoFitnessOutline />, ex: false,
         subMenus: [
             { name: "Yoga, Pilates & Studio", path: "/fitness/yoga-pilates-studio" },
             { name: "Combact Sport", path: "/fitness/combact-sport" },
             { name: "Training", path: "/fitness/training" },
             { name: "Dancing", path: "/fitness/dancing" },
+        ],
+        productD: [
+            { name: "Product Details", path: ":id", comp: <ProductDetails />, ex: true }
         ],
     },
     supplements: {
@@ -61,3 +68,21 @@ export const CategoriesObj = {
 
 export const AllRoutes = Object.values(RoutesObj);
 export const AllSubCateg = Object.values(CategoriesObj);
+
+// change to see all subs
+
+// let mF = {name: CategoriesObj.fitness.name, path: CategoriesObj.fitness.path}
+// let mS = {name: CategoriesObj.supplements.name, path: CategoriesObj.supplements.path}
+// let mW = {name: CategoriesObj.waterSport.name, path: CategoriesObj.waterSport.path}
+
+// let f = CategoriesObj.fitness.subMenus
+// let w = CategoriesObj.waterSport.subMenus
+// let s = CategoriesObj.supplements.subMenus
+
+
+// let local = [...f, ...s, ...w]
+// // local.push(mF)
+// // local.push(mS)
+// // local.push(mW)
+
+// export const AllSubCateg = local

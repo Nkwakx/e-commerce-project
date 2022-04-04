@@ -1,5 +1,5 @@
 import React from 'react'
-import FormFields from '../../components/FormFields';
+import FormFields from '../../components/forms/FormFields';
 import Authetication from '../layouts/Authetication';
 
 
