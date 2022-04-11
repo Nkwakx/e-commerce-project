@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { createContext, useContext } from 'react'
-import { collection, doc, query, setDoc, where, getDocs } from "firebase/firestore";
+import { collection, doc, query, setDoc, where, getDocs, updateDoc } from "firebase/firestore";
 import {
     createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider,
     signOut, signInWithPopup, signInAnonymously, onAuthStateChanged
@@ -24,10 +24,12 @@ export default function FirebaseAuthHookProvider({ children, ...props }) {
                 const Ref = collection(FIREBASE_FIRESTORE, PathString);
 
                 if (user !== null) {
-                    const q = query(Ref, where("uid", "==", `${user.uid}`));
-                    const querySnapshot = await getDocs(q);
+                   
+                   
 
-                    if( querySnapshot.docs[0]){
+                     const q = query(Ref, where("uid", "==", `${user.uid}`))
+                    const querySnapshot = await getDocs(q)
+                    if (querySnapshot.docs[0]) {
                         const data = querySnapshot.docs[0].data();
 
                         UserToUse = {
@@ -36,17 +38,18 @@ export default function FirebaseAuthHookProvider({ children, ...props }) {
                             email: data.email,
                             profileUrl: data.profileUrl,
                             uid: data.uid,
-                            role: data.role
+                            role: data.role,
+                            cart: data.cart
                         };
                     }
 
-                    
+
                 }
                 setCurrentUser(user ? UserToUse : null)
             });
-    }, [CurrentUser])
+    }, [])
 
-    // useEffect(() => {}, [CurrentUser])
+    useEffect(() => {}, [CurrentUser])
 
     function Register(email, password) {
         console.log("???", email, password)
@@ -103,7 +106,41 @@ export default function FirebaseAuthHookProvider({ children, ...props }) {
         }
     }
 
+    async function AddProductToCart(uid, order) {
+        const docRef = doc(FIREBASE_FIRESTORE, `${PathString}/${uid}`);
 
+        await updateDoc(docRef, { cart: order })
+            .then((res) => {
+                console.log("Added product to user cart", res);
+            }).catch((err) => {
+                console.log("Error cannot add to user cart", err);
+            });
+    }
+
+
+    async function RemoveProductFromCart(uid, prodId) {
+        console.log("??? ", uid, prodId);
+        const docRef = doc(FIREBASE_FIRESTORE, `${PathString}/${uid}`);
+
+        let tempArr = CurrentUser !== null ? CurrentUser.cart : [];
+        let arr = tempArr.filter((e) => e.id !== prodId);
+        
+        console.log("Arr ??", arr);
+
+        // let arr1 = [];
+        // tempArr.forEach((e) =>{
+        //     if(e.id !== prodId){
+        //         arr1.push(e);
+        //     }
+        // })
+
+        await updateDoc(docRef, { cart: arr })
+            .then((res) => {
+                console.log("Files array update successful", res);
+            }).catch((err) => {
+                console.log("Files array update unsuccessful", err);
+            });
+    }
 
     const value = {
         CurrentUser,
@@ -112,7 +149,9 @@ export default function FirebaseAuthHookProvider({ children, ...props }) {
         Logout,
         SignInUnknown,
         SignInWithGoogle,
-        CreateNewUser
+        CreateNewUser,
+        AddProductToCart,
+        RemoveProductFromCart
     };
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

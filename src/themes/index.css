@@ -48,6 +48,7 @@ hr {
 }
 table {
   border-collapse: collapse;
+  margin-bottom: 50px;
 }
 
 /* Zebra striping */
@@ -60,6 +61,7 @@ th {
   color: white;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 13px;
 }
 
 td,
@@ -67,14 +69,9 @@ th {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: left;
-  font-size: 18px;
 }
 
-/* 
-Max width before this PARTICULAR table gets nasty
-This query will take effect for any screen smaller than 760px
-and also iPads specifically.
-*/
+
 @media screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
   table {
     width: 100%;
@@ -140,7 +137,10 @@ and also iPads specifically.
 ::-webkit-scrollbar-thumb:hover {
   background: #dcdcdc;
 }
-
+.back-arrow{
+  margin: 15px 25px;
+  font-size: 25px;
+}
 .active-nav {
   color: red;
 }

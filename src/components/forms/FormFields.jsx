@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { BsArrowLeft } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
 import { RoutesObj } from '../../routers/AllRoutes';
 import { useAuth } from '../../firebase/FirebaseAuthHook';
@@ -36,10 +37,10 @@ export default function FormFields(props) {
                 const user = result.user;
                 console.log("Sign in/up success ", user);
                 CreateNewUser(user.uid, user)
-                .then(() => {
-                    navigation(RoutesObj.home.path);
-                  })
-                
+                    .then(() => {
+                        navigation(RoutesObj.home.path);
+                    })
+
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -49,20 +50,20 @@ export default function FormFields(props) {
 
     function SignAnonymously() {
         SignInUnknown()
-        .then((result) => {
-            const user = result.user;
-            console.log("Sign in/up success ", user);
-            CreateNewUser(user.uid, user)
-            .then(() => {
-                navigation(RoutesObj.home.path);
-              })
-            
-        }).catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log("Error ", errorCode, errorMessage);
-        });
-           
+            .then((result) => {
+                const user = result.user;
+                console.log("Sign in/up success ", user);
+                CreateNewUser(user.uid, user)
+                    .then(() => {
+                        navigation(RoutesObj.home.path);
+                    })
+
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log("Error ", errorCode, errorMessage);
+            });
+
     }
     const errorHandler = (errors) => {
 
@@ -114,7 +115,8 @@ export default function FormFields(props) {
     }
 
     return (
-        <>
+        <div className='auth-layout'>
+            <div className="back-arrow"><NavLink to='/' title="Back - Home"><BsArrowLeft /></NavLink></div>
             <form className='auth-form' onSubmit={submitHandler}>
                 <h3>{title}</h3>
 
@@ -155,7 +157,7 @@ export default function FormFields(props) {
                     <NavLink to="/forgot">Forgot Password</NavLink>
                 </div> : ''}
 
-                <button className='btn-auth' type="button" onClick={() => dataCatch(frmValues)}>{btn}</button>
+                <button className='btn-auth btn-primary' type="button" onClick={() => dataCatch(frmValues)}>{btn}</button>
 
                 {title === "Reset Password" ? <div className='text-right'>
                     <NavLink to="/signin"> Back to login page</NavLink></div> : <>
@@ -175,6 +177,6 @@ export default function FormFields(props) {
                 }
 
             </form>
-        </>
+        </div>
     )
 }

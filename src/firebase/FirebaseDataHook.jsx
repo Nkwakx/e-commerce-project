@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
-import { FIREBASE_REALTIME_DB } from './FirebaseConfig';
+import { FIREBASE_FIRESTORE, FIREBASE_REALTIME_DB } from './FirebaseConfig';
 import { set, ref, push, onValue } from 'firebase/database';
+import { doc, updateDoc } from 'firebase/firestore';
 
 const PathString = "PRODUCTS";
 
@@ -42,6 +43,7 @@ export default function FirebaseDataHookProvider({ children, ...props }) {
     function DeleteProduct(ProductId,) {
 
     }
+   
 
     const value = {
         Products,

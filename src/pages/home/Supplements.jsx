@@ -1,13 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
-import NavBar from '../../components/navigation/NavBar';
 import SideBarDisplay from '../../components/navigation/SideBarDisplay';
 
 export default function Supplements() {
 
     return (
         <>
-            <NavBar />
             <main className="body-contect">
                 <h2>Sport</h2>
                 <div className="row">

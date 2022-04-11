@@ -1,13 +1,12 @@
 import React from 'react'
+import { BsArrowLeft } from 'react-icons/bs';
 import { NavLink } from 'react-router-dom';
-import Authetication from '../layouts/Authetication';
 
 
 export default function ForgotPassword() {
   return (
-    <>
-      <Authetication />
-
+    <div className='auth-layout'>
+            <div className="back-arrow"><NavLink to='/' title="Back - Home"><BsArrowLeft /></NavLink></div>
       <form className='auth-form' action="" method="get">
       <h3>Forgot Password</h3>
 
@@ -20,8 +19,8 @@ export default function ForgotPassword() {
         <div className='text-right'>
         <p>Already have accont? <NavLink to="/signin"> Log in</NavLink></p>
         </div>
-        <input className='btn-auth' type="button" value="Submit" />
+        <input className='btn-auth btn-primary' type="button" value="Submit" />
       </form>
-    </>
+    </div>
   )
 }

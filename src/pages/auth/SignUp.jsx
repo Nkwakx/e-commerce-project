@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import FormFields from '../../components/forms/FormFields';
 import { useAuth } from '../../firebase/FirebaseAuthHook';
 import { RoutesObj } from '../../routers/AllRoutes';
-//import { Register, CreateNewUser } from '../../firebase/FirebaseAuth';
-import Authetication from '../layouts/Authetication';
 
 
 export default function SignUp() {
@@ -38,7 +36,6 @@ export default function SignUp() {
 
   return (
     <>
-      <Authetication />
       <FormFields title="Sign Up" btn="Register" dataCatch={(email, password) => submitSignUp(email, password)} />
     </>
   )

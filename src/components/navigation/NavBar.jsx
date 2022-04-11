@@ -14,7 +14,6 @@ import { useAuth } from './../../firebase/FirebaseAuthHook';
 export default function NavBar(props) {
 
   const { Logout, CurrentUser } = useAuth();
-
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -27,41 +26,6 @@ export default function NavBar(props) {
       setCurrentUser(null);
     }
   }, [CurrentUser])
-
-
-  // useEffect(() => {
-  //   GetAuthState()
-  //     .then((value) => {
-  //       if (value && value.uid && value.uid.length > 0) {
-  //         console.log("user is signed in and valid", value);
-  //         setCurrentUser(value);
-  //       } else {
-  //         console.log("User is signed out and no longer valid", value);
-  //         setCurrentUser({ displayName: "", email: "", profileUrl: "", uid: "", role: "" })
-  //       }
-  //     })
-  //     .catch((error) => { })
-  // }, [GetAuthState()])
-
-  // function AuthNon() {
-  //   return AllRoutes.reverse().map((entry, index) => {
-  //     if (currentUser && currentUser.uid && currentUser.uid.length > 0) {
-  //       return (
-  //         <React.Fragment key={index}>
-  //           {entry.name === RoutesObj.sign_in.name || entry.name === RoutesObj.sign_up.name ? (
-  //             <React.Fragment key={index}></React.Fragment>
-  //           ) : (<NavLink className='navItem' key={index} to={entry.path}>
-  //             {entry.name}
-  //           </NavLink>)}
-  //         </React.Fragment>
-  //       );
-  //     } else {
-  //       return (<NavLink className='navItem' key={index} to={entry.path}>
-  //         {entry.name}
-  //       </NavLink>)
-  //     }
-  //   })
-  // }
 
   const url = useLocation();
 
@@ -102,8 +66,9 @@ export default function NavBar(props) {
         </div>
 
         <div className="mid-social">
+          <NavLink to='/admin' className="orders" title="Oders">Admin</NavLink>
           <NavLink to='/' className="orders" title="Oders"><AiFillHeart /></NavLink>
-          <NavLink to='cart' className="orders" title="Cart"><AiOutlineShoppingCart /><span> 0</span></NavLink>
+          <NavLink to='/cart' className="orders" title="Cart"><AiOutlineShoppingCart /><span>{CurrentUser && CurrentUser.cart && CurrentUser.cart.length}</span></NavLink>
           {currentUser === null && (<NavLink to='/signin' className="Sign-in"> Login/Register</NavLink>)}
           {currentUser?.uid?.length > 0 && (<button className="Sign-in" onClick={() => { Logout(); }}>Logout</button>)}
         </div>

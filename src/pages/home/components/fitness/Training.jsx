@@ -35,7 +35,7 @@ export default function Training() {
                             <div className="card__body">
                                 <img src={entry.productImg} className="card__image" alt='' />
                                 <p className="card__title">{entry.productName}</p>
-                                <h3 className="card__description">{entry.productPrice}</h3>
+                                <h3 className="card__description">R {entry.productPrice}</h3>
                             </div>
                         </div>
                         </NavLink>

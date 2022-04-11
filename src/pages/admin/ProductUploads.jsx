@@ -10,8 +10,8 @@ export default function ProductUploads() {
         subCategory: "",
         productName: "",
         productDescription: "",
-        productPrice: "",
-        stockLevel: "",
+        productPrice: 0.00,
+        stockLevel: 1,
         productImg: [""]
     };
 
@@ -19,13 +19,9 @@ export default function ProductUploads() {
 
     const handleOnChange = (event) => {
         const { name, value } = event.target;
+        productValues.productPrice = Number(productValues.productPrice);
+        productValues.stockLevel = Number(productValues.stockLevel);
         setProductValues({ ...productValues, [name]: value });
-    }
-
-    const submitChange = (event) => {
-        event.preventDefault();
-        setProductValues("");
-        console.log(productValues);
     }
 
     useEffect(() => {
@@ -39,9 +35,7 @@ export default function ProductUploads() {
 
     return (
         <>
-            
-
-            <form className='auth-form' onSubmit={submitChange}>
+            <form className='auth-form'>
 
                 <div className='form-group'>
                     <label className="focus-label" htmlFor="mainCategory"><span>Select Category</span>
@@ -88,7 +82,7 @@ export default function ProductUploads() {
                         )}
                     </label>
                 </div>
-                
+
                 <div className="form-group mb-3">
                     <label className="focus-label" htmlFor="productName">
                         <input name="productName" type="text" id='productName'
@@ -111,7 +105,7 @@ export default function ProductUploads() {
                 </div>
                 <div className="form-group mb-3">
                     <label className="focus-label" htmlFor="productDescription">
-                        <input name="productPrice" type="text" id="productPrice"
+                        <input name="productPrice" type="number" id="productPrice"
                             placeholder='Product Price'
                             className="form-control"
                             value={productValues.productPrice}
@@ -138,8 +132,8 @@ export default function ProductUploads() {
                             onChange={handleOnChange} />
                         <span>Upload Image(s): </span>
                     </label>
-                </div><br/>
-                <button className='btn-primary'
+                </div><br />
+                <button className='btn-primary btn-auth'
                     onClick={() => { CreateProduct(productValues) }}>Add
                 </button>
             </form>

@@ -21,7 +21,7 @@ export default function AdminLayou() {
 
     // }
 
-
+    
     return (
         <>
             <header className="app-header">
@@ -35,10 +35,10 @@ export default function AdminLayou() {
             </header>
             <div className="main-menu" onMouseEnter={(active) => {
                     console.log("active-Collap", active);
-                    setIsHovering(active);
+                    setIsHovering(true);
                 }} onMouseLeave={(inactive) => {
                     console.log("inact-Collap", inactive);
-                    setIsHovering(inactive);
+                    setIsHovering(false);
                 }}><ul>
                     <div className="side-nav">
                         <li className="side-item"><i className="icon"><MdAdminPanelSettings /></i><span className="icon-text">Admin</span></li>

@@ -2,9 +2,9 @@ import React from "react"
 import { NavLink } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import Slider from "./../slideShow/Slider"
-import FitnessProducts from "../../pages/home/components/DefaultProductsDisplay/FitnessProducts";
-import SupplementsProducts from '../../pages/home/components/DefaultProductsDisplay/SupplementsProducts';
-import WaterProducts from '../../pages/home/components/DefaultProductsDisplay/WaterProducts';
+import FitnessProducts from "../../pages/home/components/DefaultProductsDisplay copy/FitnessProducts";
+import SupplementsProducts from '../../pages/home/components/DefaultProductsDisplay copy/SupplementsProducts';
+import WaterProducts from '../../pages/home/components/DefaultProductsDisplay copy/WaterProducts';
 import MainSideBarCat from './MainSideBarCat';
 
 
@@ -14,7 +14,7 @@ export default function Body() {
             <main className="body-contect container">
                 {/* <h2>Sport</h2> */}
                 <div className="row">
-                    <div className="col-md-5 sidebar">
+                    <div className="col-md-3 sidebar">
                         <h3 className="categories">Categories</h3>
                         {/* <MainSideBarCat /> */}
                         <ul>
@@ -23,8 +23,10 @@ export default function Body() {
                             <li><NavLink to="/watersport">Watersport<i><BsArrowRight /></i></NavLink></li>
                         </ul>
                     </div>
-                    <div className="col-md-7 content">
-                        {<Slider />}
+                    <div className="col-md-9 content-wrap">
+                       <div className="wrap-slide">
+                            {<Slider />}
+                       </div>
                         <div className="divider-title">
                             <h2>Fitness</h2>
                             <div className="wrapper">

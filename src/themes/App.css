@@ -58,7 +58,6 @@
   background-color: #f5f4f4ef;
   color: #282c34;
 }
-
 .mid-social a,
 .mid-social button {
   margin-right: 10px;
@@ -253,12 +252,19 @@
 }
 
 /* ================== ~AUTH START~ =================== */
+
+html .auth-layout {
+  background-color: #f8f9fa;
+  padding-bottom: 30px;
+  margin-top: 0;
+}
 .auth-background {
   overflow-y: hidden;
 }
 
 .auth-form {
-  margin-top: 30px;
+  background-color: white;
+  margin: 30px 0;
   margin-left: 35%;
   width: 25%;
   max-width: 768px;
@@ -280,12 +286,17 @@
 }
 .signup,
 .social-login,
-.btn-auth {
+.btn-auth, .btn {
   text-align: center;
-  margin-top: 30px;
+  color: white;
+  font-size: large;
+  width: 100%;
+  padding: 15px 0px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
 
-.form-control .floating-select {
+.form-control {
   border-color: #dcdcdc;
   color: #333;
   font-size: 15px;
@@ -302,8 +313,6 @@
   font-size: 15;
   font-weight: 350;
   align-items: center;
-  padding: 15px 0px;
-  margin-top: 20px;
   cursor: pointer;
   border-radius: 3px;
 }
@@ -355,6 +364,16 @@ select {
   border-bottom: 1px solid #545454;
 }
 
+.auth-form input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  background-color: rgb(205, 236, 246);
+}
+
 .auth-form label {
   margin-bottom: 20px;
   position: relative;
@@ -382,12 +401,12 @@ select:not([value=""]):valid ~ label {
   transform: translateY(0px);
 }
 
-.floating-select:focus ~ label,
+/* .floating-select:focus ~ label,
 .floating-select:not([value=""]):valid ~ label {
   top: -18px;
   font-size: 14px;
   color: #5264ae;
-}
+} */
 
 .auth-icon {
   font-size: 20px;
@@ -401,9 +420,6 @@ select:not([value=""]):valid ~ label {
   border-color: transparent;
   cursor: pointer;
 }
-.signup {
-  margin-top: 10px;
-}
 
 /* ================== ~AUTH ENDS~ =================== */
 
@@ -416,7 +432,6 @@ select:not([value=""]):valid ~ label {
 }
 
 .sidebar {
-  width: 280px;
   height: fit-content;
   color: #545454;
   background-color: #fff;
@@ -453,25 +468,20 @@ select:not([value=""]):valid ~ label {
 .sidebar li:hover {
   background-color: #ddd3;
 }
-
-.content {
+.content-wrap {
   word-wrap: break-word;
-
-  /* box-sizing: border-box;
-  border: 2px dotted #ece3e3ee; */
   border-radius: 10px;
   background-color: #fff;
+  box-sizing: border-box;
 }
 
 .side-menu {
-  width: 280px;
   height: fit-content;
   color: #545454;
   background-color: #fff;
   border: 2px solid #f5f4f4ef;
   border-radius: 10px;
   margin-top: 25px;
-  margin-left: 45px;
   box-sizing: border-box;
 }
 .side-menu h3 {
@@ -516,6 +526,14 @@ select:not([value=""]):valid ~ label {
   margin-left: 15px;
   padding-right: 10px;
 }
+@media screen and (max-width: 676px) {
+  .side-menu {
+    width: 100%;
+  }
+  .content-wrap {
+    width: 100%;
+  }
+}
 
 /* ================== ~BODY END~ =================== */
 
@@ -538,21 +556,17 @@ select:not([value=""]):valid ~ label {
   position: relative;
 }
 @media screen and (max-width: 670) {
-  .content {
-    margin-left: -45px;
-    padding: 0;
-  }
 }
 .slide-image {
   width: 100%;
   height: 100%;
 }
 .prev,
-.next {
+.nextt {
   cursor: pointer;
   z-index: 100;
   position: absolute;
-  top: 30%;
+  top: 28%;
   width: auto;
   padding: 1rem;
   font-size: 40px;
@@ -560,12 +574,12 @@ select:not([value=""]):valid ~ label {
   border-radius: 0px 5px 5px 0px;
 }
 .prev:hover,
-.next:hover {
+.nextt:hover {
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   transition: a "" 0.5s ease-in;
 }
-.next {
+.nextt {
   right: 0;
   border-radius: 5px 0px 0px 5px;
 }
@@ -591,10 +605,29 @@ select:not([value=""]):valid ~ label {
 .dot:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
+.wrap-slide {
+  margin: 10px 0 0 25px;
+  border: 1px solid #f5f4f4ef;
+  box-sizing: border-box;
+}
+.divider-title {
+  margin-left: 25px;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 676px) {
   .sidebar {
     opacity: 0;
     height: 0;
+  }
+  .wrap-slide {
+    margin: 0;
+  }
+  .divider-title {
+    margin: 0;
+  }
+  .wrapper {
+    margin: 0;
   }
 }
 /* ================== ~SLIDE PICTURES ENDS~ =================== */
@@ -608,6 +641,7 @@ select:not([value=""]):valid ~ label {
   justify-content: center;
   padding-top: 25px;
   padding-left: 15px;
+  box-sizing: border-box;
 }
 
 .card {
@@ -654,7 +688,7 @@ select:not([value=""]):valid ~ label {
 /* ================== ~QUICKVIEW START~ =================== */
 
 .product {
-  height: 80vh;
+  height: 100vh;
   background-color: whitesmoke;
   position: relative;
 }
@@ -694,8 +728,8 @@ select:not([value=""]):valid ~ label {
 }
 .counter .form-control {
   border-color: transparent;
-  width: 10px;
-  min-height: 5px;
+  width: 20px;
+  min-height: 15px;
   text-align: center;
 }
 .counter .btn-count {
@@ -832,7 +866,7 @@ img {
 .payment-method .method {
   border: 1px solid #dcdcdc;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 15px 30px;
@@ -858,8 +892,7 @@ img {
 }
 
 .label-default {
-  padding-left: 10px;
-  margin-bottom: 5px;
+  padding-left: 3px;
   font-size: 14px;
   color: #dcdcdc;
 }
@@ -867,7 +900,7 @@ img {
 .input-default {
   background: #dcdcdc;
   border-radius: 5px;
-  color: #dcdcdc;
+  color: #282c34;
 }
 
 .payment-form input {
@@ -875,11 +908,18 @@ img {
   font-size: 18px;
   font-weight: 500px;
 }
+.payment-form input[type="text"] {
+  padding: 10px 15px;
+}
+.payment-form .btn{
+  margin: 20px 0 0 5px;
+}
 
 .cardholder-name,
 .card-number {
   margin-bottom: 20px;
 }
+
 
 .card-number input,
 .cvv input {
@@ -906,10 +946,6 @@ img {
   text-align: center;
 }
 
-.btn {
-  border-radius: 5px;
-}
-
 .btn:active {
   transform: scale(0.99);
 }
@@ -921,12 +957,6 @@ img {
   outline-offset: 2px;
 }
 
-.btn-primary {
-  background: blue;
-  font-weight: 5px;
-  color: white;
-  padding: 13px 45px;
-}
 
 .btn-primary b {
   margin-right: 10px;
@@ -944,19 +974,18 @@ img {
 }
 
 .cart-item-box {
-  padding: 40px 60px;
+  padding: 40px 30px;
   margin-bottom: auto;
 }
 
-.product-card:not(:last-child) {
-  margin-bottom: 20px;
-}
 
 .product-card .card-cart {
+  margin-bottom: 30px;
+  width: 100%;
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 30px;
 }
 
 .card-cart .product-img {
@@ -968,12 +997,9 @@ img {
   font-size: 15px;
   color: #545454;
   margin-bottom: 10px;
+  margin-right: 25px;
 }
 
-.card-cart .detail .wrapper {
-  display: flex;
-  gap: 20px;
-}
 
 .product-qty {
   display: flex;
@@ -982,26 +1008,26 @@ img {
 }
 
 .product-qty button {
-  background: #dcdcdc;
-  width: 20px;
-  height: 20px;
+  border: none;
+  background-color: #dcdcdc;
+  width: 25px;
+  height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
-
-.product-qty button:active,
-.product-close-btn:active ion-icon {
-  transform: scale(0.95);
+.product-qty button:hover{
+  font-size: 25px;
+  color: #fff;
+  background-color: gray;
 }
-
-.product-qty button ion-icon {
-  --ionicon-stroke-width: 60px;
-  font-size: 10px;
-}
-
 .product-close-btn {
+  border: none;
+  font-size: 20px;
+  background-color: white;
   position: absolute;
+  cursor: pointer;
   top: 0;
   right: 0;
 }
@@ -1013,6 +1039,10 @@ img {
 
 .product-close-btn:hover ion-icon {
   color: #dcdcdc;
+  background-color: #f5f4f4ef;
+}
+.price span{
+  margin-top: 5px;
 }
 
 .discount-token {
@@ -1044,20 +1074,52 @@ img {
   color: white;
 }
 
-.amount div {
+.amount {
+  margin-top: 60px;
+  font-size: large;
+  font-weight: 600;
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
 }
 
-.amount div:not(:last-child) {
-  margin-bottom: 10px;
-}
 
 .amount .total {
   font-size: 18px;
   font-weight: 700px;
   color: #282c34;
 }
+
+.summary-cart .btn-continueShopping {
+  margin-top: 20px;
+  float: left;
+  color: black;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: 25px 55px;
+  padding: 15px;
+  background: linear-gradient(to right, black 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  box-sizing: border-box;
+}
+.btn-continueShopping i{
+  font-size: 25px;
+  margin-left: 25px;
+  box-sizing: border-box;
+}
+
+.btn-continueShopping:hover {
+  color: #fff;
+  background-position: left bottom;
+}
+
 
 /*-----------------------------------*\
   #RESPONSIVE
@@ -1068,22 +1130,9 @@ img {
     flex-direction: column-reverse;
   }
 
-  /**
-   * checkout section responsive
-   */
-
-  .checkout {
-    width: 100%;
-    border-right: none;
-  }
-
   .btn-primary {
     width: 100%;
   }
-
-  /**
-   * cart section responsive
-   */
 
   .summary-cart {
     display: grid;
@@ -1235,23 +1284,15 @@ img {
     font-size: 9px;
   }
 }
-table.table td h2.table-avatar {
-  align-items: center;
-  display: inline-flex;
-  font-size: inherit;
-  font-weight: 400;
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-  white-space: nowrap;
-}
+
 .avatar {
+  float: left;
   position: relative;
   display: inline-block;
   width: 3rem;
   height: 3rem;
 }
-.avatar > img {
+.avatar  img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -1266,10 +1307,7 @@ table.table td h2.table-avatar {
   align-items: center;
   justify-content: center;
 }
-.avatar-sm {
-  width: 2.5rem;
-  height: 2.5rem;
-}
+
 .actions a {
   margin: 2px;
 }
@@ -1307,10 +1345,113 @@ table.table td h2.table-avatar {
   padding: 7px;
 }
 .avatar-img a {
-  vertical-align: middle;
+  vertical-align: top;
   padding-right: 5px;
 }
 /* ================== ~ADMIN END~ =================== */
+
+/* ================== ~CONTACT STARTS~ =================== */
+
+.contact {
+  margin: 50px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+  background-color: #f3f3ef;
+}
+.contact-social {
+  width: 25%;
+  float: left;
+  padding: 30px 20px;
+  text-align: left;
+  font-size: large;
+  display: block;
+  border-right: 5px dotted #dcdaa9;
+}
+.contact-social a {
+  color: black;
+}
+.contact-form {
+  width: 55%;
+  float: left;
+  padding-left: 50px;
+  box-sizing: border-box;
+}
+.contact-form p {
+  padding-bottom: 40px;
+}
+.contact h1 {
+  padding: 20px 0;
+}
+
+.contact-form .text-message {
+  margin-top: 10px;
+}
+
+.contact-form .btn-contact {
+  border: 2px solid #09e5ab;
+  border-radius: 4px;
+  padding: 10px 15px !important;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600px;
+  color: white;
+  background-color: #09e5ab;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.contact-form input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #545454;
+}
+.contact-form input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  background-color: rgb(205, 236, 246);
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: both;
+  margin-top: 10px;
+}
+@media screen and (max-width: 767px) {
+  .contact-social {
+    width: 90%;
+    float: none;
+    text-align: center;
+  }
+  .contact {
+    margin: 70px 0 0 0;
+    padding: 0 0 50px 0;
+  }
+  .contact h1 {
+    padding: 20px 0;
+  }
+  .contact-form {
+    width: 98%;
+    padding: 0 10px;
+  }
+  .contact p {
+    padding: 10px 5px;
+  }
+}
+/* ================== ~CONTACT END~ =================== */
 
 /* ================== ~ERRORPAGE START~ =================== */
 
@@ -1352,6 +1493,133 @@ table.table td h2.table-avatar {
 }
 
 /* ================== ~ERRORPAGE END~ =================== */
+
+/* ================== ~FAQ STARTS~ =================== */
+
+.faq {
+  margin: 40px;
+  min-height: 70vh;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #f3f3ef;
+}
+.faq-container{
+  padding: 15px;
+}
+.title {
+  font-size: 3rem;
+  margin: 2rem 0rem;
+}
+.faq-section {
+  max-width: 700px;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid gray;
+}
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.question h3 {
+  font-size: 1.8rem;
+}
+.answer {
+  max-height: auto;
+  transition: max-height 2s ease;
+}
+
+.answer p {
+  padding-top: 1rem;
+  line-height: 1.6;
+  font-size: 1.4rem;
+}
+.faq-section.active .answer {
+  max-height: 300px;
+  animation: fade 2s ease-in-out;
+}
+.faq-section.active i {
+  transform: rotate(180deg);
+}
+
+.faq-section i {
+  margin-left: 55px;
+  transition: transform 0.9 ease-in;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+} 
+@media screen and (max-width:676px) {
+  .faq{
+    margin: 15px;
+  }
+}
+
+/* ================== ~FAQ ENDS~ =================== */
+
+
+/* ================== ~SCROLL BTN START~ =================== */
+
+.scroll-to-top {
+  font-size: 30px;
+  padding: 10px;
+  color: #282c34;
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* ================== ~SCROLL BTN END~ =================== */
+
+
+/* ================== ~PAGINATION START~ =================== */
+
+.paginationBttns{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.paginationBttns a{
+  padding: 7px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  color: gray;
+  cursor: pointer;
+}
+.paginationBttns a:hover{
+  color: #fff;
+  background-color: #282c34;
+}
+.paginationActive a{
+  color: #fff;
+  background-color: #282c34;
+}
+
+/* ================== ~PAGINATION END~ =================== */
+
 
 /* ================== ~FOOTER STARTS~ =================== */
 .footer {

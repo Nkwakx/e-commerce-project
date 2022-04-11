@@ -1,6 +1,5 @@
 import React from 'react'
 import FormFields from '../../components/forms/FormFields';
-import Authetication from '../layouts/Authetication';
 
 
 export default function ResetPassword() {
@@ -11,7 +10,6 @@ export default function ResetPassword() {
 
   return (
     <>
-      <Authetication />
       <FormFields title="Reset Password" btn="Submit" dataCatch={(email, password) => submitReset(email, password)} />
     </>
   )

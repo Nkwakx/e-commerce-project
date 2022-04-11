@@ -21,9 +21,16 @@ import SupplementsProducts from './../pages/home/components/DefaultProductsDispl
 import WaterProducts from './../pages/home/components/DefaultProductsDisplay/WaterProducts';
 import ProductUploads from './../pages/admin/ProductUploads';
 import AdminLayout from '../pages/layouts/AdminLayout'
-import ProductDetails from '../pages/home/components/Views/ProductDetails';
 import ProductList from '../pages/admin/ProductList';
 import PageNotFound from '../pages/auth/PageNotFound';
+import WrapperWithoutNav from './WrapperWithoutNav';
+import Authetication from './../pages/layouts/Authetication';
+import Account from '../pages/auth/Account';
+import SignIn from '../pages/auth/SignIn';
+import SignUp from '../pages/auth/SignUp';
+import ResetPassword from '../pages/auth/ResetPassword';
+import ForgotPassword from '../pages/auth/ForgotPassword';
+import Wrapper from './Wrapper';
 
 
 export default function Routing() {
@@ -35,10 +42,8 @@ export default function Routing() {
                 })
             }
             </Routes>
-           
-
             <Routes>
-                <Route path='/fitness' element={<Fitness />}>
+                <Route path='/fitness' element={<Wrapper body={<Fitness/>} />}>
                     <Route path='' element={<FitnessProducts />} />
                     <Route path='combact-sport' element={<CombactSport />} />
                     <Route path='dancing' element={<Dancing />} />
@@ -48,7 +53,7 @@ export default function Routing() {
             </Routes>
 
             <Routes>
-                <Route path='/supplements' element={<Supplements />}>
+                <Route path='/supplements' element={<Wrapper body={<Supplements/>} />}>
                     <Route path='' element={<SupplementsProducts />} />
                     <Route path='nutrition' element={<Nutrition />} />
                     <Route path='protein-supplements' element={<ProteinSupplements />} />
@@ -58,7 +63,7 @@ export default function Routing() {
             </Routes>
 
             <Routes>
-                <Route path='/watersport' element={<WaterSport />}>
+                <Route path='/watersport' element={<Wrapper body={<WaterSport/>} />}>
                     <Route path='' element={<WaterProducts />} />
                     <Route path='fishing' element={<Fishing />} />
                     <Route path='diving' element={<Diving />} />
@@ -68,12 +73,14 @@ export default function Routing() {
             </Routes>
 
             <Routes >
-                <Route path='/admin' element={<AdminLayout />}>
+                <Route path='/admin' element={<WrapperWithoutNav body={<AdminLayout />} />}>
                     <Route path='' element={<ProductList />} />
                     <Route path='add-product' element={<ProductUploads />} />
                 </Route>
             </Routes>
-          
+            {/* <Routes>
+                <Route key="404" path='*' element={<PageNotFound />} />
+            </Routes> */}
         </Router>
     )
 }

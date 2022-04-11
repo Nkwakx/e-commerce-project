@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useData } from '../../../../firebase/FirebaseDataHook';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import ProductDetails from '../Views/ProductDetails';
 
 
 export default function Dancing() {
@@ -54,7 +53,7 @@ export default function Dancing() {
                                 <div className="card__body">
                                     <img src={entry.productImg} className="card__image" alt='' />
                                     <p className="card__title">{entry.productName}</p>
-                                    <h3 className="card__description">{entry.productPrice}</h3>
+                                    <h3 className="card__description">R {entry.productPrice}</h3>
                                 </div>
                             </div>
 
